@@ -1,3 +1,4 @@
+# Update: Setup for Ubuntu 20.04
 # Description
 
 This repository intends to enable autonomous drone delivery with the [Intel Aero RTF drone](https://www.intel.com/content/www/us/en/products/drones/aero-ready-to-fly.html) and [PX4](http://px4.io/) autopilot. The code can be executed both on the real drone or simulated on a PC using Gazebo.
@@ -11,23 +12,26 @@ Our paper was presented at the 2019 International Conference on Unmanned Aircraf
 A video complementing the research paper available here: https://youtu.be/_pWsEVFLKYg
 # Installation
 ## Prerequisites
-The code in this repository was developed and tested on Ubuntu 16.04. It probably will not work on other operating systems or versions.
+The code in this repository was developed and tested on Ubuntu 20.04. It probably will not work on other operating systems or versions.
 ## Install ROS
 Open a terminal and then copy and paste the following commands into it. Make sure you copy and execute each command line one by one to avoid missing an installation step.
 ```
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 ```
 ```
-sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 sudo apt-get update
-sudo apt-get install ros-kinetic-desktop-full
+sudo apt-get install ros-noetic-desktop-full
+```
+```
+sudo apt install -y python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
 ```
 ```
 sudo rosdep init
 rosdep update
 ```
 ```
-echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
 Download source files from Github
